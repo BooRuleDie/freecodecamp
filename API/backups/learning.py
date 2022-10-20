@@ -116,3 +116,19 @@ def deletePost(id: int):
         detail=f"couldn't find any post with id of {id}"
         )
 ################
+
+# UPDATE of CRUD
+################
+@app.put("/posts/{id}", status_code=status.HTTP_200_OK)
+def updatePost(id: int, post: PostSchema):
+    for index, item in enumerate(memoryDatabase):
+        if item["id"] == id:
+            memoryDatabase[index] = post.dict()
+            memoryDatabase[index]["id"] = id
+            return {"data" : memoryDatabase[index]}
+
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail=f"Couldn't file post with the id of {id}"
+    )
+################
