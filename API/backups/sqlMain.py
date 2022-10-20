@@ -8,7 +8,7 @@ from time import sleep
 # if successful break the loop 
 while(True):
     try:
-        conn = psycopg2.connect(host="localhost", dbname="fastAPI", user="postgres", password="6537638Pst.", cursor_factory=RealDictCursor) 
+        conn = psycopg2.connect(host="", dbname="", user="", password="", cursor_factory=RealDictCursor) 
         cursor = conn.cursor()
         break
     except Exception as error:
