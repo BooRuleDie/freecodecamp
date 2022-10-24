@@ -64,3 +64,18 @@ class GetPostResponse(BaseModel):
     
     class Config:
         orm_mode = True
+
+class GetPostResponseWithLikes(BaseModel):
+    Post: GetPostResponse
+    post_likes: int
+
+    class Config:
+        orm_mode = True
+
+class LikePost(BaseModel): # HTTP Request
+    postId: int
+    voteDir: bool
+
+    class Config:
+        orm_mode = True
+
