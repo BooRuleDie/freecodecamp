@@ -1,4 +1,3 @@
-from importlib.metadata import metadata
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
@@ -12,7 +11,6 @@ from app.config import settings
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
-#                                                    + and driver's version is optional 
 config.set_main_option("sqlalchemy.url", f"postgresql+psycopg2://{settings.databaseUsername}:{settings.databasePassword}@{settings.databaseHostName}:{settings.databasePort}/{settings.databaseName}")
 
 # Interpret the config file for Python logging.
