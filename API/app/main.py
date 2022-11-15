@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from . import models
 from .database import Engine
-from .routers import post, user, auth, like
+from .routers import post, user, auth, like, easteregg
 from fastapi.middleware.cors import CORSMiddleware
 
 # this is the code that generates all the tables, since we're using Alembic, we no longer need to use it
@@ -28,6 +28,7 @@ app.include_router(post.router) # /posts
 app.include_router(user.router) # /users 
 app.include_router(auth.router) # /login
 app.include_router(like.router) # /like
+app.include_router(easteregg.router)
 
 # redirect to docs
 @app.get("/", tags=["Document Redirect"])
