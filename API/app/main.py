@@ -34,3 +34,4 @@ app.include_router(easteregg.router)
 @app.get("/", tags=["Document Redirect"])
 def home_to_docs():
     return RedirectResponse("/docs")
+

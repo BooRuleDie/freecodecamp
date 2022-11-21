@@ -165,3 +165,7 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/python
 test.py
+# docker-compose.yaml 
+docker-compose.yaml
+# db back up
+dockerPostgresData
