@@ -5,6 +5,6 @@ router = APIRouter(
     tags=["Easter Egg"]
 )
 
-@router.get("/easteregg")
+@router.get("/")
 def easter_egg():
     return "Easter Egg, codebase changed"

@@ -1,0 +1,37 @@
+version: '3'
+services:
+  api:
+    # in prod we don't want to build anything, best practice is getting image from the docker hub
+    # image: reponame/imagename:tagname
+    image: fastapilearning
+    depends_on:
+      - postgres
+    ports:
+      - 80:8000
+    restart: on-failure
+    environment:
+     # ENV vars in the container, not in local machine
+      - ACCESSTOKENEXPIREMINUTE=${ACCESSTOKENEXPIREMINUTE}
+      - ALGORITHM=${ALGORITHM}
+      - DATABASEHOSTNAME=${DATABASEHOSTNAME}
+      - DATABASENAME=${DATABASENAME}
+      - DATABASEPASSWORD=${DATABASEPASSWORD}
+      - DATABASEPORT=${DATABASEPORT}
+      - DATABASEUSERNAME=${DATABASEUSERNAME}
+      - SECRETKEY=${SECRETKEY}
+    # we don't want binding mount in production environment
+    # volumes:
+    #   - ./:/usr/src/app:ro
+
+    # we don't want reload in prod env
+    command: /bin/bash -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+  
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=${DATABASEPASSWORD}
+      - POSTGRES_DB=${DATABASENAME}
+    volumes:
+      - ./dockerPostgresData/:/var/lib/postgresql/data
+

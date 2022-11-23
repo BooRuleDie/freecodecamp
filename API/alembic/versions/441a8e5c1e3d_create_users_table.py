@@ -5,7 +5,6 @@ Revises: bc9f95bee344
 Create Date: 2022-10-25 08:33:11.543488
 
 """
-from enum import unique
 from alembic import op
 import sqlalchemy as sa
 
