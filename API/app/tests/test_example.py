@@ -10,7 +10,6 @@ def iwillrunfirst():
     (5,6,11),
     (7,11,18)
 ])
-
 def test_example(num1, num2, expectedResult):
     assert sum([num1, num2]) == expectedResult
 
